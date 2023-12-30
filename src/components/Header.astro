@@ -1,27 +1,38 @@
 ---
-import HeaderButton from "./HeaderButton.astro";
-import { ColorButton } from "./HeaderButton.astro";
+import { Counter } from './Counter'
+import HeaderButton from './HeaderButton.astro'
+import { ColorButton } from './HeaderButton.astro'
 ---
 
-<header class="py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6">
-  <div class="mx-auto text-center mb-8 lg:mb-16">
-    <h2 class="mb-4 text-5xl tracking-tight font-extrabold text-white">
+<header class='py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6'>
+  <div class='mx-auto text-center mb-8 lg:mb-16'>
+    <h2 class='mb-4 text-5xl tracking-tight font-extrabold text-white'>
       SpaceX launches 🚀
     </h2>
-    <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+    <p class='font-light text-gray-500 sm:text-xl dark:text-gray-400'>
       All the information about SpaceX launches
     </p>
   </div>
 
   <nav
-    class="flex flex-col [&>a]:text-white items-center justify-between w-full text-center md:flex-row"
+    class='flex flex-col [&>a]:text-white items-center justify-between w-full text-center md:flex-row'
   >
-    <HeaderButton href="/">Last launches</HeaderButton>
-    <HeaderButton colorVariant={ColorButton.CyanToBlue} href="/oldest">
+    <HeaderButton href='/'>Last launches</HeaderButton>
+    <HeaderButton
+      colorVariant={ColorButton.CyanToBlue}
+      href='/oldest'
+    >
       Oldest
     </HeaderButton>
-    <HeaderButton colorVariant={ColorButton.PurpleToPink} href="/about">
+    <HeaderButton
+      colorVariant={ColorButton.PurpleToPink}
+      href='/about'
+    >
       About
     </HeaderButton>
+    <Counter
+      client:visible
+      transition:persist
+    />
   </nav>
 </header>

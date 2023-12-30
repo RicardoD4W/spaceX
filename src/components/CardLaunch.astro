@@ -1,11 +1,7 @@
 ---
-interface Props {
-  flightNumber: number
-  success: boolean
-  id: string
-  img: string
-  details: string | null
-}
+import type { LaunchCardProp } from '../types/LaunchCardProp'
+
+interface Props extends LaunchCardProp {}
 
 const { id, img, success, flightNumber, details } = Astro.props
 

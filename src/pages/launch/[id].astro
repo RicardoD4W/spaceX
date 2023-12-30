@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getLaunchById } from '../../services/launch.service'
+
+export const prerender = false
+
+const { id } = Astro.params
+
+let launch = null
+if (id) launch = await getLaunchById({ id })
+
+// // Número finito, conocido, decenas o cientos...
+// export async function getStaticPaths() {
+//   const launches = await getLatestLaunches()
+//   return launches.map((launch) => ({
+//     params: {
+//       id: launch.id,
+//     },
+//   }))
+// }
+---
+
+<Layout title={`Launch ${launch?.name}`}>
+  <article class='flex gap-y-6 flex-col justify-center items-center my-10'>
+    <img
+      class='w-52 h-auto'
+      src={launch?.links.patch.small}
+      alt={launch?.name}
+    />
+    <h2 class='text-4xl text-white font-bold'>
+      Launch #{launch?.flight_number}
+    </h2>
+    <p class='text-lg text-center'>
+      {launch?.details}
+    </p>
+  </article>
+</Layout>
